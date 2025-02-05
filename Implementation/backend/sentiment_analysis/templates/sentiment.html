@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+</head>
+<body>
+    <h2>Enter a Review for Sentiment Analysis</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="review" rows="4" cols="50" placeholder="Type your review here..."></textarea><br>
+        <button type="submit">Analyze Sentiment</button>
+    </form>
+
+    {% if result %}
+        <h3>Analysis Result</h3>
+        <table border="1">
+            <tr>
+                <th>Original Review</th>
+                <th>Preprocessed Review</th>
+                <th>Predicted Sentiment</th>
+            </tr>
+            <tr>
+                <td>{{ result.original }}</td>
+                <td>{{ result.preprocessed }}</td>
+                <td>{{ result.sentiment }}</td>
+            </tr>
+        </table>
+        <br>
+        <a href="/">Analyze Another Review</a>
+    {% endif %}
+</body>
+</html>
