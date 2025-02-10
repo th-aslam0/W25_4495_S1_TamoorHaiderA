@@ -3,7 +3,7 @@ import { ProChat } from '@ant-design/pro-chat';
 export default function Chat() {
     return (<ProChat
         style={{
-            height: '90vh',
+            height: '100vh',
             width: '100vw',
         }}
         helloMessage={'Hello from Asklytics - COMP-4495 - Applied Research Project'}
