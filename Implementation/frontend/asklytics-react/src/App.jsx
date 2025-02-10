@@ -1,21 +1,20 @@
-import React from 'react';
-import { ProChat } from '@ant-design/pro-chat';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 
-const App = () => (
-  <ProChat
-    style={{
-      height: '100vh',
-      width: '100vw',
-    }}
-    helloMessage={
-      'Hello from Asklytics - COMP-4495 - Applied Research Project'
-    }
-    placeholder={'Ask me anything about your website analytics'}
-    request={async (messages) => {
-      const mockedData = `This is a dummy response ${messages.length}`;
-      return new Response(mockedData);
-    }}
-  />
-);
+import Login from './components/Login'
+import Chat from './components/Chat'
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login/>} />
+        <Route path="/chat" element={<Chat/>}  />
+      </Routes>
+    </Router>
+  );
+}
