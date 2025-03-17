@@ -1,1 +1,3 @@
 rpenv2/
+__pycache__/
+venv/
