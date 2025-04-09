@@ -14,10 +14,24 @@ export type User = {
 
 export type Account = {
   name: string;
-  createTime: string; // You can also use `Date` if you want to work with Date objects
-  updateTime: string; // Similarly, `Date` is an option here too
+  createTime: string;
+  updateTime: string;
   displayName: string;
   regionCode: string;
+};
+
+export type Property = {
+  name: string;
+  parent: string;
+  createTime: string;
+  updateTime: string;
+  displayName: string;
+  industryCategory: string;
+  timeZone: string;
+  currencyCode: string;
+  serviceLevel: string;
+  account: string;
+  propertyType: string;
 };
 
 export type Step = {

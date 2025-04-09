@@ -1,19 +1,36 @@
 import { create } from "zustand";
-import { Account, User } from "./types";
+import { Account, Property, User } from "./types";
 
 type Store = {
-  user: User | null;
-  setUser: (user: User | null) => void;
+    accessToken: string | null;
+    setAccessToken: (accessToken: string | null) => void;
+  
+    user: User | null;
+    setUser: (user: User | null) => void;
+  
+    accounts: Account[];
+    setAccounts: (accounts: Account[]) => void;
+  
+    properties: Property[];
+    setProperties: (properties: Property[]) => void;
 
-  accounts: Account[] | [];
-  setAccounts: (accounts: Account[] | []) => void;
-};
+    selectedProperty: Property | null;
+    setSelectedProperty: (property: Property | null) => void;
+  };
+
 
 const useStateStore = create<Store>((set) => ({
+  accessToken: null,
   user: null,
   accounts: [],
+  properties: [],
+  selectedProperty: null,
+
+  setAccessToken: (accessToken) => set({ accessToken }),
   setUser: (user) => set({ user }),
   setAccounts: (accounts) => set({ accounts }),
+  setProperties: (properties) => set({ properties }),
+  setSelectedProperty: (selectedProperty) => set({ selectedProperty })
 }));
 
 export default useStateStore;

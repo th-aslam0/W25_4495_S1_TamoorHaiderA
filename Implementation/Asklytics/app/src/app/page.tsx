@@ -11,7 +11,7 @@ import AccountSelection from "./account_selection";
 import useStateStore from "@/lib/store";
 
 export default function Home() {
-  const { user, setUser, setAccounts } = useStateStore();
+  const { user, selectedProperty, setUser, setAccounts, setAccessToken } = useStateStore();
 
   const googleLogin = useGoogleLogin({
     scope: 'https://www.googleapis.com/auth/analytics.readonly https://www.googleapis.com/auth/analytics.edit',
@@ -27,13 +27,14 @@ export default function Home() {
       console.log(user, accountsInfo);
       setUser(user.data);
       setAccounts(accountsInfo.data.accounts);
+      setAccessToken(tokenResponse.access_token);
     },
     onError: errorResponse => console.log(errorResponse),
   });
 
   return (
     <div>
-      {!user ? <GoogleLogin googleLogin={googleLogin} /> : <AccountSelection /> /*<Chat />*/}
+      {!user ? <GoogleLogin googleLogin={googleLogin} /> : !selectedProperty ? <AccountSelection /> : <Chat />}
     </div>
   );
 }
