@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { IncompleteJsonParser } from "incomplete-json-parser";
-import { ChatOutput } from "@/types";
+import { ChatOutput } from "@/lib/types";
 import { ArrowIcon } from "@/lib/const";
 
 const TextArea = ({

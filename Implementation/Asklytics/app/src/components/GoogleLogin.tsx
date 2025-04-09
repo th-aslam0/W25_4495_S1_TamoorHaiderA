@@ -1,8 +1,6 @@
-type GoogleLoginProps = {
-  googleLogin: () => void;
-};
+import { GoogleLoginPropsType } from "@/lib/types";
 
-export default function GoogleLogin({ googleLogin }: GoogleLoginProps) {
+export default function GoogleLogin({ googleLogin }: GoogleLoginPropsType) {
   return (<div className="flex justify-center items-center min-h-screen bg-gray-100">
     <div className="flex flex-col items-center gap-6 p-6 rounded-lg shadow-md">
       <h1 className="text-2xl font-semibold text-gray-800">Login to Asklytics</h1>

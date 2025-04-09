@@ -2,7 +2,8 @@
 
 import Output from "@/components/Output";
 import TextArea from "@/components/TextArea";
-import { type ChatOutput } from "@/types";
+import UserBanner from "@/components/UserBanner";
+import { type ChatOutput } from "@/lib/types";
 import { useState } from "react";
 
 export default function Chat() {
@@ -18,7 +19,7 @@ export default function Chat() {
       <div className="w-full">
         {outputs.length === 0 && (
           <h1 className="text-2xl text-center mb-5">
-            Hello from Asklytics - COMP-4495 - Applied Research Project
+            Hello to Asklytics - COMP-4495 - Applied Research Project
           </h1>
         )}
 
