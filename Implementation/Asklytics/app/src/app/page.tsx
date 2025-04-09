@@ -1,38 +1,31 @@
 "use client";
 
-import Output from "@/components/Output";
-import TextArea from "@/components/TextArea";
-import { type ChatOutput } from "@/types";
+import axios from "axios";
+import { useGoogleLogin } from "@react-oauth/google";
+import Chat from "./chat";
 import { useState } from "react";
+import GoogleLogin from "@/components/GoogleLogin";
 
 export default function Home() {
-  const [outputs, setOutputs] = useState<ChatOutput[]>([]);
-  const [isGenerating, setIsGenerating] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const googleLogin = useGoogleLogin({
+    scope: 'https://www.googleapis.com/auth/analytics.readonly https://www.googleapis.com/auth/analytics.edit',
+    onSuccess: async (tokenResponse) => {
+      console.log(tokenResponse);
+      const userInfo = await axios.get(
+        'https://www.googleapis.com/oauth2/v3/userinfo',
+        { headers: { Authorization: `Bearer ${tokenResponse.access_token}` } },
+      );
+      setIsLoggedIn(true);
+      console.log(userInfo);
+    },
+    onError: errorResponse => console.log(errorResponse),
+  });
 
   return (
-    <div
-      className={`container pt-10 pb-32 min-h-screen ${
-        outputs.length === 0 && "flex items-center justify-center"
-      }`}
-    >
-      <div className="w-full">
-        {outputs.length === 0 && (
-          <h1 className="text-4xl text-center mb-5">
-            What do you want to know?
-          </h1>
-        )}
-
-        <TextArea
-          setIsGenerating={setIsGenerating}
-          isGenerating={isGenerating}
-          outputs={outputs}
-          setOutputs={setOutputs}
-        />
-
-        {outputs.map((output, i) => {
-          return <Output key={i} output={output} />;
-        })}
-      </div>
+    <div>
+      { !isLoggedIn ? <GoogleLogin  googleLogin={ googleLogin } /> : <Chat /> }
     </div>
   );
 }
