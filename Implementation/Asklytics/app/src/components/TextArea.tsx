@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { IncompleteJsonParser } from "incomplete-json-parser";
 import { ChatOutput } from "@/lib/types";
 import { ArrowIcon } from "@/lib/const";
+import useStateStore from "@/lib/store";
 
 const TextArea = ({
   setIsGenerating,
@@ -20,6 +21,8 @@ const TextArea = ({
   const parser = new IncompleteJsonParser();
 
   const [text, setText] = useState("");
+  const { accessToken, selectedProperty } = useStateStore();
+  console.log(selectedProperty)
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   // Handles form submission
@@ -47,7 +50,7 @@ const TextArea = ({
     setIsGenerating(true);
 
     try {
-      const res = await fetch(`http://localhost:8000/invoke?content=${text}`, {
+      const res = await fetch(`http://localhost:8000/invoke?content=${text}&access_token=${accessToken}&property_id=${selectedProperty?.name.split('/')[1]}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
