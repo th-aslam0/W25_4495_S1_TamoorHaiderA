@@ -14,7 +14,7 @@ export default function Home() {
   const { user, selectedProperty, setUser, setAccounts, setAccessToken } = useStateStore();
 
   const googleLogin = useGoogleLogin({
-    scope: 'https://www.googleapis.com/auth/analytics.readonly https://www.googleapis.com/auth/analytics.edit',
+    scope: 'https://www.googleapis.com/auth/analytics.readonly https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/business.manage',
     onSuccess: async (tokenResponse) => {
       console.log(tokenResponse);
       const user = await axios.get(
