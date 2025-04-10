@@ -1,5 +1,5 @@
 import MarkdownRenderer from "@/components/MarkdownRenderer";
-import { type ChatOutput } from "@/types";
+import { type ChatOutput } from "@/lib/types";
 import GenerationSteps from "./GenerationSteps";
 
 const Output = ({ output }: { output: ChatOutput }) => {

@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronUp } from "@/lib/const";
-import { Step } from "@/types";
+import { Step } from "@/lib/types";
 import { useEffect, useState } from "react";
 
 const GenerationSteps = ({ steps, done }: { steps: Step[]; done: boolean }) => {
