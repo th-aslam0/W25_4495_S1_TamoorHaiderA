@@ -9,7 +9,7 @@ import { useState } from "react";
 export default function Chat() {
   const [outputs, setOutputs] = useState<ChatOutput[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
-  const { user, accounts, accessToken, selectedProperty } = useStateStore();
+  const { user, accounts, selectedProperty } = useStateStore();
 
   const selectedAccount: Account | undefined = accounts.find(
     (account) => selectedProperty?.account === account.name
