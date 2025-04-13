@@ -34,10 +34,13 @@ W25_4495_S1_TamoorHaiderA
 3. `uv venv --python 3.12.7`
 4. `uv sync`
 5. `source .venv/bin/activate`
-6. `source mac.env`
+5. Paste API secret to `mac.env` (sent in email to `kandhadaip@douglascollege.ca`) 
+6. `source mac.env` 
 7. `cd` into the `/api` directory, type `cd api`
 8. Run `uv run uvicorn main:app --reload` to start the API
 
+### Test Website with GA4 Added
+- https://th-aslam.github.io
 
 ### ~~4. For Mistral2.ipynb~~ ***(Deprecated)***
 ~~1. ```cd Implementation/backend/models_analysis```

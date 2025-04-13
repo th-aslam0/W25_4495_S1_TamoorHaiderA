@@ -22,7 +22,6 @@ const TextArea = ({
 
   const [text, setText] = useState("");
   const { accessToken, selectedProperty } = useStateStore();
-  console.log(selectedProperty)
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   // Handles form submission

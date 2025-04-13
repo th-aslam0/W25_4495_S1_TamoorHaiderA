@@ -4,8 +4,9 @@ import Output from "@/components/Output";
 import TextArea from "@/components/TextArea";
 import useStateStore from "@/lib/store";
 import { Account, type ChatOutput } from "@/lib/types";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import axios from "axios";
+import ReviewBox from "@/components/ReviewBox";
 
 
 export default function Chat() {
@@ -18,8 +19,8 @@ export default function Chat() {
   );
 
   const handleQuit = () => {
-    useStateStore.persist.clearStorage()
-    window.location.href = "/"; // example: go back to home
+    useStateStore.persist.clearStorage();
+    window.location.href = "/";
   };
 
   return (
@@ -39,11 +40,8 @@ Property: ${selectedProperty?.displayName ?? "N/A"}`}
           Quit Chat
         </button>
       </div>
-
-      <div
-        className={`container pt-10 pb-32 min-h-screen bg-gray-700 ${outputs.length === 0 && "flex items-center justify-center"
-          }`}
-      >
+      <ReviewBox key={0} />
+      <div className={`container pt-10 pb-32 min-h-screen bg-gray-700 ${outputs.length === 0 && "flex items-center justify-center"}`}>
         <div className="w-full">
           {outputs.length === 0 && (
             <h1 className="text-2xl text-center mb-5">
