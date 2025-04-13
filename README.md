@@ -20,28 +20,29 @@ W25_4495_S1_TamoorHaiderA
 ```git clone https://github.com/th-aslam0/W25_4495_S1_TamoorHaiderA.git```
 
 ### 2. For frontend
-1. ```cd Implementation/frontend/asklytics-react```
+1. ```cd Implementation/Asklytics/app```
 2. ```npm install```
 3. ```npm run dev```
-4. The vite server will start on `http://localhost:5173/`
+4. The turbo server will start on `http://localhost:3000/`
 5. Navigate to
-	1. `http://localhost:5173/login`
-	2. `http://localhost:5173/chat`
+	- `http://localhost:3000`
 
 
 ### 3. For Backend
-1. ```cd Implementation/backend```
-2. ```python3 -m venv venv  && source venv/bin/activate```
-3. ```pip install -r requirements.txt```
-4. The vite server will start on `python3 manage.py runserver`
-5. Navigate to
-	1. `http://localhost:8000/sentiment_analysis`
+1. ```cd Implementation/Asklytics```
+2. `uv python install 3.12.7`
+3. `uv venv --python 3.12.7`
+4. `uv sync`
+5. `source .venv/bin/activate`
+6. `source mac.env`
+7. `cd` into the `/api` directory, type `cd api`
+8. Run `uv run uvicorn main:app --reload` to start the API
 
 
-### 4. For Mistral2.ipynb
-1. ```cd Implementation/backend/models_analysis```
+### ~~4. For Mistral2.ipynb~~ ***(Deprecated)***
+~~1. ```cd Implementation/backend/models_analysis```
 2. Open ```Implementation/backend/models_analysis/mistral2.ipynb``` in VSCode or JupyterNote Book or Kaggle Notebook
-3. Run the file, you will be asked to enter the api key & token from Hugging face, please find it in our email.
+3. Run the file, you will be asked to enter the api key & token from Hugging face, please find it in our email.~~
 
 
 
