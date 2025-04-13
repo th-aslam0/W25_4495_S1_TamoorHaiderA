@@ -6,6 +6,8 @@ import useStateStore from "@/lib/store";
 import { Account, type ChatOutput } from "@/lib/types";
 import { useState } from "react";
 
+
+
 export default function Chat() {
   const [outputs, setOutputs] = useState<ChatOutput[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -15,17 +17,27 @@ export default function Chat() {
     (account) => selectedProperty?.account === account.name
   );
 
+  const handleQuit = () => {
+    useStateStore.persist.clearStorage()
+    window.location.href = "/"; // example: go back to home
+  };
+
   return (
     <div>
-      <div className="container bg-gray-900 text-green-400 font-mono text-sm p-4 rounded-lg shadow-md w-full max-w-2xl overflow-auto flex items-center justify-center">
+      <div className="container bg-gray-900 text-green-400 font-mono text-sm p-4 rounded-lg shadow-md w-full max-w-2xl overflow-auto flex justify-between items-center">
         <pre>
           <code>
             {`User: ${user?.name ?? "N/A"}
 Account:  ${selectedAccount?.displayName ?? "N/A"}
-Property: ${selectedProperty?.displayName ?? "N/A"}`
-            }
+Property: ${selectedProperty?.displayName ?? "N/A"}`}
           </code>
         </pre>
+        <button
+          onClick={handleQuit}
+          className="ml-4 bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded transition-all duration-200"
+        >
+          Quit Chat
+        </button>
       </div>
 
       <div

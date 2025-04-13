@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 
 # initilizing our application
 app = FastAPI()
+reports_dict = {}
 
 app.add_middleware(
     CORSMiddleware,
@@ -88,7 +89,9 @@ def run_ga4_report(access_token: str, property_id: str):
 # invoke function
 @app.post("/invoke")
 async def invoke(content: str, access_token: str, property_id: str):
-    report = run_ga4_report(access_token, property_id)
+    if access_token not in reports_dict:
+        reports_dict[access_token] = run_ga4_report(access_token, property_id)
+    report = reports_dict.get(access_token)
     queue: asyncio.Queue = asyncio.Queue()
     streamer = QueueCallbackHandler(queue)
     # return the streaming response
