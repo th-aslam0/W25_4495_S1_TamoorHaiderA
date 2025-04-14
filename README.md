@@ -15,7 +15,21 @@ Mohamed Nuskhan Mohamed Niyas (300368621)
 #### Repository Name: 
 W25_4495_S1_TamoorHaiderA
 
-## App Running Instructions
+# Installation Guide
+
+## Frontend Requirements
+- Node.js v18 or newer  
+- A modern web browser (e.g., Chrome)
+
+## Backend Requirements
+- Python 3.12.7  
+- `uv` (a fast Python package manager)
+
+### Install `uv`:
+
+`curl -Ls https://astral.sh/uv/install.sh | sh`
+
+
 ### 1. Clone the repo
 ```git clone https://github.com/th-aslam0/W25_4495_S1_TamoorHaiderA.git```
 
